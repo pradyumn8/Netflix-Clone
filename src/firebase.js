@@ -11,6 +11,7 @@ import {
     collection,
     getFirestore
 } from "firebase/firestore/lite";
+import { toast } from "react-toastify";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAfU15k3Gscz7FE2iar3zd2v3MHA-dxay4",
@@ -39,7 +40,7 @@ const signup = async (name, email, password) => {
         });
     } catch (error) {
         console.log(error);
-        alert(error.message);
+        toast.error(error.code);
     }
 }
 
@@ -48,7 +49,7 @@ const login = async (email, password) => {
         await signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
         console.log(error);
-        alert(error.message);
+        toast.error(error.code);
     }
 }
 
